@@ -6,7 +6,11 @@ from configs import COLORS
 CARD_SIZE = configs.px(150)
 CARD_LEFT = configs.px(112)
 CARD_STEP = configs.px(262)
-LOGO_BOTTOM = configs.px(146)
+LOGO_LEFT = configs.px(129)
+LOGO_TOP = configs.px(50)
+LOGO_WIDTH = configs.px(150)
+LOGO_HEIGHT = configs.px(144)
+LOGO_BOTTOM = LOGO_TOP + LOGO_HEIGHT
 CARD_TOP = LOGO_BOTTOM + (configs.window.HEIGHT - LOGO_BOTTOM - CARD_SIZE) // 2
 
 GAMES = [
@@ -34,7 +38,7 @@ class SelectionScreen:
     def __init__(self, screen, user_id):
         self.screen = screen
         self.user_id = user_id
-        self.logo = pygame.transform.smoothscale(configs.image.LOGO, (configs.px(100), configs.px(96)))
+        self.logo = pygame.transform.smoothscale(configs.image.LOGO, (LOGO_WIDTH, LOGO_HEIGHT))
         self.background = configs.image.BACKGROUND
         self.background_scale = pygame.transform.scale(self.background, (configs.window.WIDTH, int(self.background.get_height() *
                                                                         configs.window.WIDTH / self.background.get_width())))
@@ -72,7 +76,7 @@ class SelectionScreen:
     def draw(self):
         self.screen.fill(COLORS["white"])
         self.screen.blit(self.background_scale, (0, 0))
-        self.screen.blit(self.logo, (configs.px(129), configs.px(50)))
+        self.screen.blit(self.logo, (LOGO_LEFT, LOGO_TOP))
 
         for card in self.cards:
             box = card["box"]
