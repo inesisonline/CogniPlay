@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+.idea/
+.vscode/
+
+cogniplay.db
+cogniplay.sql
+*.sqlite
+*.sqlite3
+
+Thumbs.db
+desktop.ini
