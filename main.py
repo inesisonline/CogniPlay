@@ -12,7 +12,7 @@ from encontre_pato import EncontrePato
 from colheita_atenta import ColheitaAtenta
 
 # window
-screen = pygame.display.set_mode([window.WIDTH, window.HEIGHT], pygame.SCALED | pygame.RESIZABLE)
+screen = pygame.display.set_mode([window.WIDTH, window.HEIGHT], pygame.SCALED | pygame.RESIZABLE | pygame.FULLSCREEN)
 pygame.display.set_caption(window.TITLE)
 pygame.display.set_icon(pygame.image.load('imgs/brain_icon.png'))
 

@@ -45,7 +45,7 @@ The database file `cogniplay.db` is created automatically on first run.
 - **Mouse** - navigate the menus and play Memória Botânica and Encontre o Pato
 - **SPACE** - respond to good apples in Colheita Atenta
 - **I** - open and close the instructions of the current game
-- **F11** - toggle fullscreen
+- **F11** - toggle fullscreen (the app starts in fullscreen)
 
 ## Project structure
 
