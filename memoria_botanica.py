@@ -49,12 +49,12 @@ class Card:
 
     def draw(self, screen):
         if self.face_up or self.matched:
-            pygame.draw.rect(screen, COLORS["white"], self.rect, border_radius=10)
-            pygame.draw.rect(screen, COLORS["black"], self.rect, 2, border_radius=10)
+            pygame.draw.rect(screen, COLORS["white"], self.rect, border_radius=configs.px(10))
+            pygame.draw.rect(screen, COLORS["black"], self.rect, configs.px(2), border_radius=configs.px(10))
             image_rect = self.flower.get_rect(center=self.rect.center)
             screen.blit(self.flower, image_rect)
         else:
-            pygame.draw.rect(screen, COLORS["primary"], self.rect, border_radius=10)
+            pygame.draw.rect(screen, COLORS["primary"], self.rect, border_radius=configs.px(10))
 
 # create class for Memória Botânica game
 class MemoriaBotanica:
@@ -62,9 +62,9 @@ class MemoriaBotanica:
         self.screen = screen
         self.user_id = user_id
         self.level = database.load_progress(self.user_id, "memoria_botanica")
-        self.font = pygame.font.Font(configs.font.ROBOTO_MONO_REGULAR, 18)
+        self.font = pygame.font.Font(configs.font.ROBOTO_MONO_REGULAR, configs.px(18))
         self.timer = Timer()
-        self.back_button = pygame.Rect(20, 20, 50, 50)
+        self.back_button = pygame.Rect(configs.px(20), configs.px(20), configs.px(50), configs.px(50))
 
         self.positions = []
         self.first = None
@@ -72,11 +72,11 @@ class MemoriaBotanica:
         self.flip_back = None
         self.cards_per_row = 3
         self.cards_per_column = 2
-        self.card_width = 100
-        self.card_height = 100
-        self.TOP = 60
-        self.BOTTOM = 45
-        self.MARGIN = 20
+        self.card_width = configs.px(100)
+        self.card_height = configs.px(100)
+        self.TOP = configs.px(60)
+        self.BOTTOM = configs.px(45)
+        self.MARGIN = configs.px(20)
         self.cards = []
         self.action = None
         self.instructions = Instructions(INSTRUCTIONS_TEXT, self.font, self.timer)
@@ -162,11 +162,11 @@ class MemoriaBotanica:
         # timer
         elapsed = self.timer.time_elapsed()
         timer_text = self.font.render(f"{elapsed // 60:02}:{elapsed % 60:02}", True, COLORS["black"])
-        self.screen.blit(timer_text, (configs.window.WIDTH // 2 - timer_text.get_width() // 2, 20))
+        self.screen.blit(timer_text, (configs.window.WIDTH // 2 - timer_text.get_width() // 2, configs.px(20)))
 
         # level
         level_text = self.font.render(f"Nível {self.level}", True, COLORS["black"])
-        self.screen.blit(level_text, (configs.window.WIDTH - level_text.get_width() - 20, 20))
+        self.screen.blit(level_text, (configs.window.WIDTH - level_text.get_width() - configs.px(75), configs.px(20)))
 
         # cards
         for card in self.cards:

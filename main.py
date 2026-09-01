@@ -16,6 +16,17 @@ screen = pygame.display.set_mode([window.WIDTH, window.HEIGHT], pygame.SCALED | 
 pygame.display.set_caption(window.TITLE)
 pygame.display.set_icon(pygame.image.load('imgs/brain_icon.png'))
 
+exit_button = pygame.Rect(window.WIDTH - px(60), px(20), px(40), px(40))
+
+def draw_exit_button(surface):
+    pygame.draw.rect(surface, (255, 255, 255), exit_button, border_radius=px(8))
+    pygame.draw.rect(surface, (255, 210, 15), exit_button, px(2), border_radius=px(8))
+    inset = px(12)
+    pygame.draw.line(surface, (0, 0, 0), (exit_button.left + inset, exit_button.top + inset),
+                     (exit_button.right - inset, exit_button.bottom - inset), px(2))
+    pygame.draw.line(surface, (0, 0, 0), (exit_button.right - inset, exit_button.top + inset),
+                     (exit_button.left + inset, exit_button.bottom - inset), px(2))
+
 # clock
 clock = pygame.time.Clock()
 
@@ -33,12 +44,16 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+        if event.type == pygame.MOUSEBUTTONDOWN and exit_button.collidepoint(event.pos):
+            pygame.quit()
+            quit()
         if event.type == pygame.KEYDOWN and event.key == pygame.K_F11:
             pygame.display.toggle_fullscreen()
             continue
         current_screen.handle_event(event)
 
     current_screen.draw()
+    draw_exit_button(screen)
 
     previous_screen = current_screen
 

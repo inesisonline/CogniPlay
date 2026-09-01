@@ -45,18 +45,18 @@ class EncontrePato:
         self.screen = screen
         self.user_id = user_id
         self.level = database.load_progress(self.user_id, "encontre_pato")
-        self.font = pygame.font.Font(configs.font.ROBOTO_MONO_REGULAR, 18)
+        self.font = pygame.font.Font(configs.font.ROBOTO_MONO_REGULAR, configs.px(18))
         self.timer = Timer()
-        self.back_button = pygame.Rect(20, 20, 50, 50)
+        self.back_button = pygame.Rect(configs.px(20), configs.px(20), configs.px(50), configs.px(50))
 
         self.positions = []
         self.animals_per_row = 2
         self.animals_per_column = 2
-        self.animal_width = 50
-        self.animal_height = 50
-        self.TOP = 70
-        self.BOTTOM = 45
-        self.MARGIN = 20
+        self.animal_width = configs.px(50)
+        self.animal_height = configs.px(50)
+        self.TOP = configs.px(70)
+        self.BOTTOM = configs.px(45)
+        self.MARGIN = configs.px(20)
         self.target = ANIMALS[0]
         self.wrong_animal = None
         self.wrong_timer = 0
@@ -129,16 +129,16 @@ class EncontrePato:
 
         elapsed = self.timer.time_elapsed()
         timer_text = self.font.render(f"{elapsed // 60:02}:{elapsed % 60:02}", True, COLORS["black"])
-        self.screen.blit(timer_text, (configs.window.WIDTH // 2 - timer_text.get_width() // 2, 20))
+        self.screen.blit(timer_text, (configs.window.WIDTH // 2 - timer_text.get_width() // 2, configs.px(20)))
 
         # target image
         label = self.font.render("Encontre o", True, COLORS["black"])
-        self.screen.blit(label, (90, 30))
-        self.screen.blit(self.target, (90 + label.get_width() + 10, 10))
+        self.screen.blit(label, (configs.px(90), configs.px(30)))
+        self.screen.blit(self.target, (configs.px(90) + label.get_width() + configs.px(10), configs.px(10)))
         
         # level
         level_text = self.font.render(f"Nível {self.level}", True, COLORS["black"])
-        self.screen.blit(level_text, (configs.window.WIDTH - level_text.get_width() - 20, 20))
+        self.screen.blit(level_text, (configs.window.WIDTH - level_text.get_width() - configs.px(75), configs.px(20)))
 
         # animals
         for animal in self.animals:
@@ -146,8 +146,8 @@ class EncontrePato:
 
         # wrong animal
         if self.wrong_animal is not None and pygame.time.get_ticks() < self.wrong_timer:
-            pygame.draw.line(self.screen, COLORS["tertiary"], self.wrong_animal.topleft, self.wrong_animal.bottomright, 5)
-            pygame.draw.line(self.screen, COLORS["tertiary"], self.wrong_animal.topright, self.wrong_animal.bottomleft, 5)
+            pygame.draw.line(self.screen, COLORS["tertiary"], self.wrong_animal.topleft, self.wrong_animal.bottomright, configs.px(5))
+            pygame.draw.line(self.screen, COLORS["tertiary"], self.wrong_animal.topright, self.wrong_animal.bottomleft, configs.px(5))
 
         # blit back button
         self.screen.blit(configs.image.BACK_BUTTON, self.back_button)

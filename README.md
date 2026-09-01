@@ -46,6 +46,7 @@ The database file `cogniplay.db` is created automatically on first run.
 - **SPACE** - respond to good apples in Colheita Atenta
 - **I** - open and close the instructions of the current game
 - **F11** - toggle fullscreen (the app starts in fullscreen)
+- **The × button** in the top right corner closes the app
 
 ## Project structure
 

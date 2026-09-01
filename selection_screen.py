@@ -10,10 +10,10 @@ COLORS = {
     "grey": (110, 110, 110)
 }
 
-CARD_SIZE = 150
-CARD_LEFT = 112
-CARD_STEP = 262
-LOGO_BOTTOM = 146
+CARD_SIZE = configs.px(150)
+CARD_LEFT = configs.px(112)
+CARD_STEP = configs.px(262)
+LOGO_BOTTOM = configs.px(146)
 CARD_TOP = LOGO_BOTTOM + (configs.window.HEIGHT - LOGO_BOTTOM - CARD_SIZE) // 2
 
 GAMES = [
@@ -41,12 +41,12 @@ class SelectionScreen:
     def __init__(self, screen, user_id):
         self.screen = screen
         self.user_id = user_id
-        self.logo = pygame.transform.scale(configs.image.LOGO, (100, 96))
+        self.logo = pygame.transform.smoothscale(configs.image.LOGO, (configs.px(100), configs.px(96)))
         self.background = configs.image.BACKGROUND
         self.background_scale = pygame.transform.scale(self.background, (configs.window.WIDTH, int(self.background.get_height() *
                                                                         configs.window.WIDTH / self.background.get_width())))
         self.background_scale.set_alpha(100)
-        self.back_button = pygame.Rect(20, 20, 50, 50)
+        self.back_button = pygame.Rect(configs.px(20), configs.px(20), configs.px(50), configs.px(50))
         self.action = None
 
         self.padding = int(CARD_SIZE * 0.07)
@@ -79,7 +79,7 @@ class SelectionScreen:
     def draw(self):
         self.screen.fill(COLORS["white"])
         self.screen.blit(self.background_scale, (0, 0))
-        self.screen.blit(self.logo, (129, 50))
+        self.screen.blit(self.logo, (configs.px(129), configs.px(50)))
 
         for card in self.cards:
             box = card["box"]

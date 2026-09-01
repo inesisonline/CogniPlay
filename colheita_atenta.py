@@ -31,7 +31,7 @@ class Apple:
         self.apple = apple
 
     def draw(self, screen):
-        pygame.draw.rect(screen, COLORS["black"], self.rect, 2, border_radius=10)
+        pygame.draw.rect(screen, COLORS["black"], self.rect, configs.px(2), border_radius=configs.px(10))
         image_rect = self.apple.get_rect(center=self.rect.center)
         screen.blit(self.apple, image_rect)
 
@@ -41,9 +41,9 @@ class ColheitaAtenta:
         self.screen = screen
         self.user_id = user_id
         self.level = database.load_progress(self.user_id, "colheita_atenta")
-        self.font = pygame.font.Font(configs.font.ROBOTO_MONO_REGULAR, 18)
+        self.font = pygame.font.Font(configs.font.ROBOTO_MONO_REGULAR, configs.px(18))
         self.timer = Timer()
-        self.back_button = pygame.Rect(20, 20, 50, 50)
+        self.back_button = pygame.Rect(configs.px(20), configs.px(20), configs.px(50), configs.px(50))
 
         self.current_fruit = random.choice(APPLES)
         self.good_apple = configs.apple.APPLE
@@ -100,11 +100,11 @@ class ColheitaAtenta:
         # timer
         elapsed = self.timer.time_elapsed()
         timer_text = self.font.render(f"{elapsed // 60:02}:{elapsed % 60:02}", True, COLORS["black"])
-        self.screen.blit(timer_text, (configs.window.WIDTH // 2 - timer_text.get_width() // 2, 20))
+        self.screen.blit(timer_text, (configs.window.WIDTH // 2 - timer_text.get_width() // 2, configs.px(20)))
 
         # level
         level_text = self.font.render(f"Nível {self.level}", True, COLORS["black"])
-        self.screen.blit(level_text, (configs.window.WIDTH - level_text.get_width() - 20, 20))
+        self.screen.blit(level_text, (configs.window.WIDTH - level_text.get_width() - configs.px(75), configs.px(20)))
 
         # apples
         image = self.current_fruit
@@ -113,8 +113,8 @@ class ColheitaAtenta:
 
         # press space on rotten apple
         if pygame.time.get_ticks() < self.error_timer:
-            pygame.draw.line(self.screen, COLORS["tertiary"], rect.topleft, rect.bottomright, 10)
-            pygame.draw.line(self.screen, COLORS["tertiary"], rect.topright, rect.bottomleft, 10)
+            pygame.draw.line(self.screen, COLORS["tertiary"], rect.topleft, rect.bottomright, configs.px(10))
+            pygame.draw.line(self.screen, COLORS["tertiary"], rect.topright, rect.bottomleft, configs.px(10))
 
         # blit back button
         self.screen.blit(configs.image.BACK_BUTTON, self.back_button)
