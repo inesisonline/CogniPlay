@@ -74,7 +74,8 @@ class MemoriaBotanica:
         self.cards_per_column = 2
         self.card_width = 100
         self.card_height = 100
-        self.TOP = 90
+        self.TOP = 60
+        self.BOTTOM = 45
         self.MARGIN = 20
         self.cards = []
         self.action = None
@@ -87,11 +88,13 @@ class MemoriaBotanica:
     def create_card_positions(self):
         self.positions = []
         grid_width = self.cards_per_row * self.card_width + (self.cards_per_row - 1) * self.MARGIN
+        grid_height = self.cards_per_column * self.card_height + (self.cards_per_column - 1) * self.MARGIN
         start_x = (configs.window.WIDTH - grid_width) // 2
+        start_y = self.TOP + (configs.window.HEIGHT - self.TOP - self.BOTTOM - grid_height) // 2
         for i in range(self.cards_per_row):
             for j in range(self.cards_per_column):
                 x = start_x + i * (self.card_width + self.MARGIN)
-                y = self.TOP + j * (self.card_height + self.MARGIN)
+                y = start_y + j * (self.card_height + self.MARGIN)
                 self.positions.append((x, y))
         return self.positions
 

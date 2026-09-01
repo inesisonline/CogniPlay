@@ -5,7 +5,7 @@ pygame.init()
 class window:
     TITLE = "CogniPlay"
     WIDTH = 900
-    HEIGHT = 450
+    HEIGHT = 506
 
 class font:
     ROBOTO_MONO_REGULAR = 'fonts/RobotoMono-Regular.ttf'

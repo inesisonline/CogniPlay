@@ -12,7 +12,7 @@ from EncontrePato import EncontrePato
 from ColheitaAtenta import ColheitaAtenta
 
 # window
-screen = pygame.display.set_mode([window.WIDTH, window.HEIGHT])
+screen = pygame.display.set_mode([window.WIDTH, window.HEIGHT], pygame.SCALED | pygame.RESIZABLE)
 pygame.display.set_caption(window.TITLE)
 pygame.display.set_icon(pygame.image.load('imgs/brain_icon.png'))
 
@@ -33,6 +33,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_F11:
+            pygame.display.toggle_fullscreen()
+            continue
         current_screen.handle_event(event)
 
     current_screen.draw()

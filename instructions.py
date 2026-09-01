@@ -60,11 +60,12 @@ class Instructions:
     def draw(self, screen):
         screen.fill(COLORS["white"])
 
-        y = 150
+        line_height = self.font.get_height() + 8
+        y = (configs.window.HEIGHT - len(self.lines) * line_height) // 2
         for line in self.lines:
             text = self.font.render(line, True, COLORS["black"])
             screen.blit(text, (configs.window.WIDTH // 2 - text.get_width() // 2, y))
-            y += self.font.get_height() + 8
+            y += line_height
 
         if self.already_played:
             message = "Pressione I para continuar"

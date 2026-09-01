@@ -54,7 +54,8 @@ class EncontrePato:
         self.animals_per_column = 2
         self.animal_width = 50
         self.animal_height = 50
-        self.TOP = 90
+        self.TOP = 70
+        self.BOTTOM = 45
         self.MARGIN = 20
         self.target = ANIMALS[0]
         self.wrong_animal = None
@@ -69,11 +70,13 @@ class EncontrePato:
     def create_animal_positions(self):
         self.positions = []
         grid_width = self.animals_per_row * self.animal_width + (self.animals_per_row - 1) * self.MARGIN
+        grid_height = self.animals_per_column * self.animal_height + (self.animals_per_column - 1) * self.MARGIN
         start_x = (configs.window.WIDTH - grid_width) // 2
+        start_y = self.TOP + (configs.window.HEIGHT - self.TOP - self.BOTTOM - grid_height) // 2
         for i in range(self.animals_per_row):
             for j in range(self.animals_per_column):
                 x = start_x + i * (self.animal_width + self.MARGIN)
-                y = self.TOP + j * (self.animal_height + self.MARGIN)
+                y = start_y + j * (self.animal_height + self.MARGIN)
                 self.positions.append((x, y))
         return self.positions
 

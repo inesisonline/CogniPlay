@@ -2,6 +2,9 @@ import pygame
 import configs
 import database
 
+LOGO_BOTTOM = 146
+FORM_HEIGHT = 200
+
 COLORS = {
     "white":  (255, 255, 255),
     "black":  (0, 0, 0),
@@ -20,11 +23,12 @@ class LogInScreen():
         self.background = configs.image.BACKGROUND
         self.background_scale = pygame.transform.scale(self.background, (configs.window.WIDTH, int(self.background.get_height() * configs.window.WIDTH / self.background.get_width())))
         self.background_scale.set_alpha(100)
+        self.form_top = LOGO_BOTTOM + (configs.window.HEIGHT - LOGO_BOTTOM - FORM_HEIGHT) // 2
         self.username_label = self.font.render("Nome de utilizador", False, COLORS["black"])
-        self.username_box = pygame.Rect(129, 200, 350, 30)
+        self.username_box = pygame.Rect(129, self.form_top + 25, 350, 30)
         self.password_label = self.font.render("Palavra passe", False, COLORS["black"])
-        self.password_box = pygame.Rect(129, 275, 350, 30)
-        self.go_button = pygame.Rect(725, 325, 100, 50)
+        self.password_box = pygame.Rect(129, self.form_top + 100, 350, 30)
+        self.go_button = pygame.Rect(725, self.form_top + 150, 100, 50)
         self.go_label = self.font.render("Entrar", True, COLORS["black"])
         self.back_button = pygame.Rect(20, 20, 50, 50)
         self.username = ""
@@ -73,7 +77,7 @@ class LogInScreen():
         self.screen.blit(self.logo, (129, 50))
 
         # blit username label
-        self.screen.blit(self.username_label, (129, 175))
+        self.screen.blit(self.username_label, (129, self.form_top))
 
         # blit username box
         pygame.draw.rect(self.screen, COLORS["black"], self.username_box, 2)
@@ -83,7 +87,7 @@ class LogInScreen():
         self.screen.blit(username_surface, (self.username_box.x + 5, self.username_box.y + 5))
 
         # blit password label
-        self.screen.blit(self.password_label, (129, 250))
+        self.screen.blit(self.password_label, (129, self.form_top + 75))
 
         # blit password box
         pygame.draw.rect(self.screen, COLORS["black"], self.password_box, 2)
@@ -100,7 +104,7 @@ class LogInScreen():
                                          self.go_button.centery - self.go_label.get_height() // 2))
 
         message_surface = self.font.render(self.message, True, COLORS["tertiary"])
-        self.screen.blit(message_surface, (129, 425))
+        self.screen.blit(message_surface, (129, configs.window.HEIGHT - 60))
 
         # blit back button
         self.screen.blit(configs.image.BACK_BUTTON, self.back_button)
