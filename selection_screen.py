@@ -6,7 +6,7 @@ COLORS = {
     "black":  (0, 0, 0),
     "primary": (255, 210, 15),
     "secondary": (0, 45, 240),
-    "tertiary": (245, 60, 27),
+    "onError": (245, 60, 27),
     "grey": (110, 110, 110)
 }
 

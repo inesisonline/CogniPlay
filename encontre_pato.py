@@ -10,7 +10,7 @@ COLORS = {
     "black":  (0, 0, 0),
     "primary": (255, 210, 15),
     "secondary": (0, 45, 240),
-    "tertiary": (245, 60, 27)
+    "onError": (245, 60, 27)
 }
 
 ANIMALS = [
@@ -146,8 +146,8 @@ class EncontrePato:
 
         # wrong animal
         if self.wrong_animal is not None and pygame.time.get_ticks() < self.wrong_timer:
-            pygame.draw.line(self.screen, COLORS["tertiary"], self.wrong_animal.topleft, self.wrong_animal.bottomright, configs.px(5))
-            pygame.draw.line(self.screen, COLORS["tertiary"], self.wrong_animal.topright, self.wrong_animal.bottomleft, configs.px(5))
+            pygame.draw.line(self.screen, COLORS["onError"], self.wrong_animal.topleft, self.wrong_animal.bottomright, configs.px(5))
+            pygame.draw.line(self.screen, COLORS["onError"], self.wrong_animal.topright, self.wrong_animal.bottomleft, configs.px(5))
 
         # blit back button
         self.screen.blit(configs.image.BACK_BUTTON, self.back_button)

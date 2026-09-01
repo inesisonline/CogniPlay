@@ -10,7 +10,7 @@ COLORS = {
     "black":  (0, 0, 0),
     "primary": (255, 210, 15),
     "secondary": (0, 45, 240),
-    "tertiary": (245, 60, 27),
+    "onError": (245, 60, 27),
     "correct": (40, 160, 70)
 }
 
@@ -118,8 +118,8 @@ class ColheitaAtenta:
 
         # press space on rotten apple
         if pygame.time.get_ticks() < self.error_timer:
-            pygame.draw.line(self.screen, COLORS["tertiary"], rect.topleft, rect.bottomright, configs.px(10))
-            pygame.draw.line(self.screen, COLORS["tertiary"], rect.topright, rect.bottomleft, configs.px(10))
+            pygame.draw.line(self.screen, COLORS["onError"], rect.topleft, rect.bottomright, configs.px(10))
+            pygame.draw.line(self.screen, COLORS["onError"], rect.topright, rect.bottomleft, configs.px(10))
 
         if pygame.time.get_ticks() < self.correct_timer:
             start = (int(rect.left + rect.width * 0.18), int(rect.top + rect.height * 0.52))

@@ -10,7 +10,7 @@ COLORS = {
     "black":  (0, 0, 0),
     "primary": (255, 210, 15),
     "secondary": (0, 45, 240),
-    "tertiary": (245, 60, 27)
+    "onError": (245, 60, 27)
 }
 
 # created class for sign up screen
@@ -124,7 +124,7 @@ class SignUpScreen:
                                          self.go_button.centery - self.go_label.get_height() // 2))
 
         # blit message
-        message_surface = self.font.render(self.message, True, COLORS["tertiary"], )
+        message_surface = self.font.render(self.message, True, COLORS["onError"], )
         self.screen.blit(message_surface, (configs.px(129), configs.window.HEIGHT - configs.px(60)))
 
         # blit back button
