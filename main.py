@@ -3,13 +3,13 @@
 # password: test123
 
 from configs import *
-from StartScreen import StartScreen
-from LogInScreen import LogInScreen
-from SignUpScreen import SignUpScreen
-from SelectionScreen import SelectionScreen
-from MemoriaBotanica import MemoriaBotanica
-from EncontrePato import EncontrePato
-from ColheitaAtenta import ColheitaAtenta
+from start_screen import StartScreen
+from login_screen import LogInScreen
+from signup_screen import SignUpScreen
+from selection_screen import SelectionScreen
+from memoria_botanica import MemoriaBotanica
+from encontre_pato import EncontrePato
+from colheita_atenta import ColheitaAtenta
 
 # window
 screen = pygame.display.set_mode([window.WIDTH, window.HEIGHT], pygame.SCALED | pygame.RESIZABLE)

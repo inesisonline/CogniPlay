@@ -2,7 +2,7 @@ import pygame
 import configs
 import database
 import random
-from Timer import Timer
+from timer import Timer
 from instructions import Instructions
 
 COLORS = {

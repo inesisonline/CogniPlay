@@ -53,15 +53,15 @@ The database file `cogniplay.db` is created automatically on first run.
 main.py               central game loop and screen navigation
 configs.py            window, font and image settings
 database.py           SQLite access, user registration and login
-Timer.py              elapsed time counter, with pause and resume
+timer.py              elapsed time counter, with pause and resume
 instructions.py       shared instructions screen and text wrapping
-StartScreen.py        welcome screen
-SignUpScreen.py       registration screen
-LogInScreen.py        login screen
-SelectionScreen.py    game selection menu
-MemoriaBotanica.py    memory mini-game
-EncontrePato.py       attention mini-game
-ColheitaAtenta.py     inhibitory control mini-game
+start_screen.py       welcome screen
+signup_screen.py      registration screen
+login_screen.py       login screen
+selection_screen.py   game selection menu
+memoria_botanica.py   memory mini-game
+encontre_pato.py      attention mini-game
+colheita_atenta.py    inhibitory control mini-game
 imgs/                 images
 fonts/                fonts
 ```
