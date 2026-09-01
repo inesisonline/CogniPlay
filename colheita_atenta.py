@@ -10,7 +10,8 @@ COLORS = {
     "black":  (0, 0, 0),
     "primary": (255, 210, 15),
     "secondary": (0, 45, 240),
-    "tertiary": (245, 60, 27)
+    "tertiary": (245, 60, 27),
+    "correct": (40, 160, 70)
 }
 
 APPLES = [
@@ -53,6 +54,7 @@ class ColheitaAtenta:
         self.count = 0
         self.fruits_per_level = 30
         self.error_timer = 0
+        self.correct_timer = 0
         self.action = None
         self.instructions = Instructions(INSTRUCTIONS_TEXT, self.font, self.timer)
 
@@ -61,6 +63,8 @@ class ColheitaAtenta:
         self.user_response = False
         self.shown_at = pygame.time.get_ticks()
         self.count += 1
+        self.error_timer = 0
+        self.correct_timer = 0
 
     def apple_display_time(self):
         return max(1500 - (self.level - 1) * 50, 700)
@@ -86,6 +90,7 @@ class ColheitaAtenta:
             if event.key == pygame.K_SPACE:
                 if self.current_fruit == self.good_apple:
                     self.count += 1
+                    self.correct_timer = pygame.time.get_ticks() + 500
                 elif self.current_fruit == self.rotten_apple:
                     self.error_timer = pygame.time.get_ticks() + 500
 
@@ -115,6 +120,14 @@ class ColheitaAtenta:
         if pygame.time.get_ticks() < self.error_timer:
             pygame.draw.line(self.screen, COLORS["tertiary"], rect.topleft, rect.bottomright, configs.px(10))
             pygame.draw.line(self.screen, COLORS["tertiary"], rect.topright, rect.bottomleft, configs.px(10))
+
+        if pygame.time.get_ticks() < self.correct_timer:
+            start = (int(rect.left + rect.width * 0.18), int(rect.top + rect.height * 0.52))
+            corner = (int(rect.left + rect.width * 0.42), int(rect.top + rect.height * 0.78))
+            end = (int(rect.left + rect.width * 0.84), int(rect.top + rect.height * 0.22))
+            pygame.draw.line(self.screen, COLORS["correct"], start, corner, configs.px(10))
+            pygame.draw.line(self.screen, COLORS["correct"], corner, end, configs.px(10))
+            pygame.draw.circle(self.screen, COLORS["correct"], corner, configs.px(5))
 
         # blit back button
         self.screen.blit(configs.image.BACK_BUTTON, self.back_button)
