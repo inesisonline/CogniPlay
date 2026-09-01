@@ -1,17 +1,11 @@
 import pygame
 import configs
+from configs import COLORS
 import database
 
 LOGO_BOTTOM = configs.px(146)
 FORM_HEIGHT = configs.px(200)
 
-COLORS = {
-    "white":  (255, 255, 255),
-    "black":  (0, 0, 0),
-    "primary": (255, 210, 15),
-    "secondary": (0, 45, 240),
-    "onError": (245, 60, 27)
-}
 
 # created class for log in screen
 class LogInScreen():

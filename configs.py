@@ -7,6 +7,16 @@ SCALE = 1.6
 def px(value):
     return int(value * SCALE)
 
+COLORS = {
+    "white": (255, 255, 255),
+    "black": (0, 0, 0),
+    "primary": (255, 210, 15),
+    "secondary": (0, 45, 240),
+    "onError": (245, 60, 27),
+    "correct": (40, 160, 70),
+    "grey": (110, 110, 110)
+}
+
 class window:
     TITLE = "CogniPlay"
     WIDTH = px(900)

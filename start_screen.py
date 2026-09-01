@@ -1,16 +1,9 @@
 import pygame
 import configs
+from configs import COLORS
 from instructions import wrap_text
 
 # renamed to "primary" "secondary" etc
-COLORS = {
-    "white":  (255, 255, 255),
-    "black":  (0, 0, 0),
-    "primary": (255, 210, 15),
-    "secondary": (0, 45, 240),
-    "onError": (245, 60, 27)
-}
-
 # welcome text to introduce the app to the user
 welcome_text = ("O CogniPlay é um programa de estimulação cognitiva que, "
                 "através de pequenos jogos, o ajuda a treinar e fortalecer a mente. "

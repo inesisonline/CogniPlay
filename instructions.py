@@ -1,12 +1,7 @@
 import pygame
 import configs
+from configs import COLORS
 
-COLORS = {
-    "white": (255, 255, 255),
-    "black": (0, 0, 0),
-    "primary": (255, 210, 15),
-    "grey": (110, 110, 110)
-}
 
 def wrap_text(text, font, max_width):
     words = text.split(" ")

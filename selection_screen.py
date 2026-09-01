@@ -1,14 +1,7 @@
 import pygame
 import configs
+from configs import COLORS
 
-COLORS = {
-    "white":  (255, 255, 255),
-    "black":  (0, 0, 0),
-    "primary": (255, 210, 15),
-    "secondary": (0, 45, 240),
-    "onError": (245, 60, 27),
-    "grey": (110, 110, 110)
-}
 
 CARD_SIZE = configs.px(150)
 CARD_LEFT = configs.px(112)

@@ -1,17 +1,11 @@
 import pygame
 import configs
+from configs import COLORS
 import database
 import random
 from timer import Timer
 from instructions import Instructions
 
-COLORS = {
-    "white":  (255, 255, 255),
-    "black":  (0, 0, 0),
-    "primary": (255, 210, 15),
-    "secondary": (0, 45, 240),
-    "onError": (245, 60, 27)
-}
 
 ANIMALS = [
     configs.animal.DUCK,
